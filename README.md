@@ -31,7 +31,7 @@ Docker deploying Nginx MySQL PHP5.4 PHP5.6 PHP7.2  in on compose file, support f
 5. Start docker containers:
    
    ```
-   $ docker-compose -f  docker-compose.yml up -d 
+   $ docker-compose -f  docker-compose-dnmp.yml up -d 
    ```
    
 6. Go to your browser and type `localhost`, you will see:
