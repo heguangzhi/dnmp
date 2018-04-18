@@ -1,5 +1,5 @@
-# dnmp
-Docker deploying Nginx MySQL PHP7 in one key, support full feature functions.
+# DNMP
+Docker deploying Nginx MySQL PHP5.4 PHP5.6 PHP7.2  in on compose file, support full feature functions.
 
 ![Demo Image](./dnmp.png)
 
@@ -20,30 +20,32 @@ Docker deploying Nginx MySQL PHP7 in one key, support full feature functions.
 1. Install `git`, `docker` and `docker-compose`;
 2. Clone project:
     ```
-    $ git clone https://github.com/yeszao/dnmp.git
+    $ git clone https://github.com/heguangzhi/dnmp.git
     ```
-4. Start docker containers:
+4.  Build php5.4 php5.6 php7.2 :
     ```
     $ cd dnmp
-    $ docker-compose up
+    $ docker-compose build 
     ```
     You may need use `sudo` before this command in Linux.
-5. Go to your browser and type `localhost`, you will see:
+5. Start docker containers:
+   
+   ```
+   $ docker-compose -f  docker-compose.yml up -d 
+   ```
+   
+6. Go to your browser and type `localhost`, you will see:
 
 ![Demo Image](./snapshot.png)
 
-The index file is located in `./www/site1/`.
+The index file is located in `./www/www.site1.com/`.
 
 ### Other PHP version?
 Default, we start LATEST PHP version by using:
 ```
 $ docker-compose up
 ```
-we can also start PHP5.4 or PHP5.6 by using:
-```
-$ docker-compose -f docker-compose54.yml up
-$ docker-compose -f docker-compose56.yml up
-```
+
 We need not change any other files, such as nginx config file or php.ini, everything will work fine in current environment (except code compatibility error).
 
 > Notice: We can only start one php version, for they using same port. We must STOP the running project then START the other one.
