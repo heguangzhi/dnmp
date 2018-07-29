@@ -1,4 +1,4 @@
-# Lnmp
+# dnmp
 
 Docker开发环境：Nginx MySQL  Redis PHP5.4  PHP5.6 PHP7.2 支持xdebug 
 
@@ -23,12 +23,12 @@ Docker开发环境：Nginx MySQL  Redis PHP5.4  PHP5.6 PHP7.2 支持xdebug
 2. lnmp.tar为全部的Docker lnmp images文件，使用Docker加载images 
     
 ```
-$docker load -i lnmp.tar 
+$docker load -i dnmp.tar 
 $dcoker images 
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
-lnmp_php-5.6        latest              5058dd413ff1        2 days ago          685MB
-lnmp_php-5.4        latest              3d5f34a10142        2 days ago          854MB
-lnmp_php-7.2        latest              c44343fb86f1        2 days ago          739MB
+dnmp_php-5.6        latest              5058dd413ff1        2 days ago          685MB
+dnmp_php-5.4        latest              3d5f34a10142        2 days ago          854MB
+dnmp_php-7.2        latest              c44343fb86f1        2 days ago          739MB
 nginx               alpine              2dea9e73d89e        6 days ago          18MB
 redis               latest              c5355f8853e4        13 days ago         107MB
 mysql               latest              5195076672a7        3 weeks ago         371MB
@@ -39,7 +39,7 @@ mysql               latest              5195076672a7        3 weeks ago         
 4. 启动docker容器:
 
 ```
- $docker-compose -f docker-compose-lnmp.yml up -d 
+ $docker-compose -f docker-compose-dnmp.yml up -d 
  $docker ps 
     
 CONTAINER ID        IMAGE                 COMMAND                  CREATED             STATUS              PORTS                                      NAMES
@@ -91,4 +91,10 @@ $docker exec -it  <container_id>  nginx -s reload
 在PHP容器中php-fpm进程pid 为1 
 ```
 $docker exec -it  <container_id>  kill  -USR1 1	
+```
+也可以通过service名称重新启动容器 
+
+```
+$docker-compose  restart  fpm-5.6 
+
 ```

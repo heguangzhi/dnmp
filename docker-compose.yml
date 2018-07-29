@@ -12,10 +12,10 @@ nginx:
     - php-7.2:fpm-7.2
     - php-5.6:fpm-5.6
     - php-5.4:fpm-5.4
+    - php-7.1:fpm-7.1
 
 php-7.2:
-  build: ./php/php-7.2/
-  net: "host"
+  image: dnmp_php-7.2:latest
   expose:
     - "9000"
   volumes:
@@ -26,11 +26,24 @@ php-7.2:
   links:
     - mysql:mysql
     - redis:redis
+
+
+php-7.1:
+  image: dnmp_php-7.1:latest
+  expose:
+    - "9000"
+  volumes:
+    - ./www/:/var/www/html/:rw
+    - ./conf/php-7.1/php.ini:/usr/local/etc/php/php.ini:ro
+    - ./conf/php-7.1/php-fpm.d/www.conf:/usr/local/etc/php-fpm.d/www.conf:rw
+    - ./log/php-fpm-7.1/:/var/log/php-fpm/:rw
+  links:
+    - mysql:mysql
+    - redis:redis
  
 php-5.6:
-  build: ./php/php-5.6/
-  
-  net: "host"
+  #build: ./php/php-5.6/
+  image: dnmp_php-5.6:latest
   expose:
     - "9000"
   volumes:
@@ -43,8 +56,8 @@ php-5.6:
     - redis:redis 
 
 php-5.4:
-  build: ./php/php-5.4/
-  net: "host"
+  image: dnmp_php-5.4:latest
+  #build: ./php/php-5.4/
   expose:
     - "9000"
   volumes:
@@ -57,7 +70,7 @@ php-5.4:
     - redis:redis 
 
 mysql:
-  image: mysql:latest
+  image: mysql:5.7
   ports:
     - "3306:3306"
   volumes:

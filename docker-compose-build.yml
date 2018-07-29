@@ -1,0 +1,32 @@
+nginx:
+  image: nginx:alpine
+  
+
+php-7.2:
+  build: ./php/php-7.2/
+  net: "host"
+
+
+
+php-7.1:
+
+  build: ./php/php-7.1/
+  net: "host"
+ 
+ 
+php-5.6:
+  build: ./php/php-5.6/
+  net: "host"
+
+
+php-5.4:
+  build: ./php/php-5.4/
+  net: "host"
+
+
+mysql:
+  image: mysql:latest
+
+
+redis:
+  image: redis:latest
