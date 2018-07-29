@@ -214,9 +214,38 @@ Redis使用和MySQL类似。在主机和容器内部都通过地址127.0.0.1，�
 
 ### 二、构建镜像文件
 
-1.根据系统Linux,MacOS 安装 `docker` and `docker-compose`;
+* 根据系统Linux,MacOS 安装 `docker` and `docker-compose`;
 
-2.build PHP不同的版本的镜像
+
+* 国内镜像仓库
+Docker默认从DockerHub仓库下载镜像，更换途径，使用阿里云的加速Docker仓库
+
+注册一个阿里云账号，然后访问阿里云的Docker镜像仓库，能找到加速器地址。
+
+https://cr.console.aliyun.com/cn-beijing/mirrors 
+
+
+1. 安装／升级Docker客户端
+推荐安装1.10.0以上版本的Docker客户端，参考文档 docker-ce
+
+2. 配置镜像加速器
+针对Docker客户端版本大于 1.10.0 的用户
+
+您可以通过修改daemon配置文件/etc/docker/daemon.json来使用加速器
+sudo mkdir -p /etc/docker
+sudo tee /etc/docker/daemon.json <<-'EOF'
+{
+  "registry-mirrors": ["https://i37cj3ld.mirror.aliyuncs.com"]
+}
+EOF
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+
+Docker 1.10以下请看：https://yq.aliyun.com/articles/29941。
+
+
+
+* build PHP不同的版本的镜像
 
 ```
 $docker-compose  -f   docker-compose-build.yml build 
