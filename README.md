@@ -204,7 +204,7 @@ $pdo = new PDO('mysql:host=mysql;dbname=****', 'root', '123456');
 
 这是因为PHP代码是在PHP-FPM容器中，PHP-FPM容器启动时会自动在/etc/hosts中加上：
 
-172.17.0.2 mysql 11e55f91c4c3 dlnmp_mysql_1
+172.17.0.2 mysql 11e55f91c4c3 dnmp_mysql_1
 就是说，mysql自动指向了MySQL容器动态生成的IP。
 
 * 使用Redis
@@ -232,6 +232,9 @@ https://cr.console.aliyun.com/cn-beijing/mirrors
 针对Docker客户端版本大于 1.10.0 的用户
 
 您可以通过修改daemon配置文件/etc/docker/daemon.json来使用加速器
+
+```
+
 sudo mkdir -p /etc/docker
 sudo tee /etc/docker/daemon.json <<-'EOF'
 {
@@ -243,7 +246,7 @@ sudo systemctl restart docker
 
 Docker 1.10以下请看：https://yq.aliyun.com/articles/29941。
 
-
+```
 
 * build PHP不同的版本的镜像
 
