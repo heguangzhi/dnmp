@@ -278,11 +278,12 @@ php                 5.4-fpm             1b825a5a7ecd        2 years ago         
 
 ```
 
-3.构建并启动
+3.构建并启动DNMP
 
 ```
 
 $docker-compose  up -d 
+
 $docker ps 
 
 CONTAINER ID        IMAGE                 COMMAND                  CREATED             STATUS              PORTS                                      NAMES
