@@ -123,3 +123,6 @@ RUN pecl install redis-3.1.4 \
     && pecl install memcached-2.2.0 \
     && docker-php-ext-enable memcached
 
+# Config TIME_ZONE
+ENV TIME_ZONE=Asia/Shanghai
+RUN ln -snf /usr/share/zoneinfo/$TIME_ZONE /etc/localtime && echo $TIME_ZONE > /etc/timezone
