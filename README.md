@@ -261,43 +261,45 @@ $docker-compose  -f   docker-compose-build.yml build
 $docker images 
 
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
-dnmp_php-5.4        latest              c7547ad4b620        17 minutes ago      856MB
-dnmp_php-5.6        latest              f9bb5e62b7b7        25 minutes ago      668MB
-dnmp_php-7.1        latest              a2872a662aac        33 minutes ago      701MB
-dnmp_php-7.2        latest              bbd4dfa4addb        44 minutes ago      710MB
-php                 5.6-fpm             8d3dc6499e61        7 days ago          344MB
-php                 7.1-fpm             72197c69469a        7 days ago          358MB
-php                 7.2-fpm             1d5598895841        7 days ago          367MB
-php                 5.4-fpm             1b825a5a7ecd        2 years ago         469MB
+dnmp_redis          latest              1f8625486a7c        2 hours ago         83.4MB
+dnmp_mysql          latest              7c4721471bbf        2 hours ago         372MB
+dnmp_nginx          latest              873baaf32c10        2 hours ago         18.6MB
+dnmp_php-7.1        latest              37d8af74edcf        2 hours ago         700MB
+dnmp_php-7.2        latest              8c71f5b4c965        2 hours ago         710MB
+dnmp_php-5.6        latest              82af6947b093        3 hours ago         668MB
+dnmp_php-5.4        latest              4ebb508214b0        3 hours ago         856MB
+mysql               5.7                 75576f90a779        2 days ago          372MB
+nginx               alpine              36f3464a2197        9 days ago          18.6MB
+php                 5.6-fpm             8d3dc6499e61        12 days ago         344MB
+php                 7.1-fpm             72197c69469a        12 days ago         358MB
+php                 7.2-fpm             1d5598895841        12 days ago         367MB
+redis               latest              f06a5773f01e        2 weeks ago         83.4MB
+php                 5.4-fpm             1b825a5a7ecd        2 years ago         469MB```
 
 ```
 
 3.构建并启动
 
 ```
+
 $docker-compose  up -d 
-$docker images 
+$docker ps 
 
-REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
-dnmp_php-5.4        latest              c7547ad4b620        About an hour ago   856MB
-dnmp_php-5.6        latest              f9bb5e62b7b7        About an hour ago   668MB
-dnmp_php-7.1        latest              a2872a662aac        2 hours ago         701MB
-dnmp_php-7.2        latest              bbd4dfa4addb        2 hours ago         710MB
-mysql               5.7                 6bb891430fb6        2 days ago          372MB
-nginx               alpine              36f3464a2197        4 days ago          18.6MB
-php                 5.6-fpm             8d3dc6499e61        7 days ago          344MB
-php                 7.1-fpm             72197c69469a        7 days ago          358MB
-php                 7.2-fpm             1d5598895841        7 days ago          367MB
-redis               latest              f06a5773f01e        11 days ago         83.4MB
-php                 5.4-fpm             1b825a5a7ecd        2 years ago         469MB
-
+CONTAINER ID        IMAGE                 COMMAND                  CREATED             STATUS              PORTS                                      NAMES
+ed007d8d69b2        dnmp_nginx:latest     "nginx -g 'daemon ofΒ   2 hours ago         Up 2 hours          0.0.0.0:80->80/tcp, 0.0.0.0:443->443/tcp   dnmp_nginx_1
+e0a4a2530663        dnmp_mysql:latest     "docker-entrypoint.sΒ   2 hours ago         Up 2 hours          0.0.0.0:3306->3306/tcp                     dnmp_mysql_1
+00b0cca0455c        dnmp_redis:latest     "docker-entrypoint.sΒ   2 hours ago         Up 2 hours          0.0.0.0:6379->6379/tcp                     dnmp_redis_1
+4a713f865c8b        dnmp_php-7.1:latest   "docker-php-entrypoiΒ   2 hours ago         Up 2 hours          9000/tcp                                   dnmp_php-7.1_1
+d6cf990c932e        dnmp_php-5.4:latest   "php-fpm"                2 hours ago         Up 2 hours          9000/tcp                                   dnmp_php-5.4_1
+64e03cd823ed        dnmp_php-5.6:latest   "docker-php-entrypoiΒ   2 hours ago         Up 2 hours          9000/tcp                                   dnmp_php-5.6_1
+ddd712165aec        dnmp_php-7.2:latest   "docker-php-entrypoiΒ   2 hours ago         Up 2 hours          9000/tcp                                   dnmp_php-7.2_1
 
 ```
 
 4.打包dnmp集成开发环境images
 
 ```
-$ docker save dnmp_php-5.4 dnmp_php-5.6 dnmp_php-7.1  dnmp_php-7.2 mysql nginx redis > dnmp.tar
+$ docker save dnmp_php-5.4 dnmp_php-5.6 dnmp_php-7.1  dnmp_php-7.2  dnmp_redis dnmp_mysql dnmp_nginx > dnmp.tar 
 ``` 
 
 
