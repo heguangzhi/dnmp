@@ -137,3 +137,7 @@ RUN pecl install redis-3.1.4 \
 #        && ( cd zendopcache-7.0.5 && phpize && ./configure && make && make install ) \
 #        && rm -r zendopcache-7.0.5 \
 #        && docker-php-ext-enable opcache
+
+# Config TIME_ZONE
+ENV TIME_ZONE=Asia/Shanghai
+RUN ln -snf /usr/share/zoneinfo/$TIME_ZONE /etc/localtime && echo $TIME_ZONE > /etc/timezone
