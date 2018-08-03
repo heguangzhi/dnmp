@@ -1,31 +1,31 @@
 nginx:
-  image: nginx:alpine
+  build: ./other/nginx
   
 
-php-7.2:
-  build: ./php/php-7.2/
-  net: "host"
+# php-7.2:
+#   build: ./php/php-7.2/
+#   net: "host"
 
 
-php-7.1:
+# php-7.1:
 
-  build: ./php/php-7.1/
-  net: "host"
+#   build: ./php/php-7.1/
+#   net: "host"
  
  
-php-5.6:
-  build: ./php/php-5.6/
-  net: "host"
+# php-5.6:
+#   build: ./php/php-5.6/
+#   net: "host"
 
 
-php-5.4:
-  build: ./php/php-5.4/
-  net: "host"
+# php-5.4:
+#   build: ./php/php-5.4/
+#   net: "host"
 
 
 mysql:
-  image: mysql:latest
+  build: ./other/mysql
 
 
 redis:
-  image: redis:latest
+  build: ./other/redis
