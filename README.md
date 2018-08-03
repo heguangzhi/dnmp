@@ -108,8 +108,8 @@ d155fbb9f5c8        redis:latest          "docker-entrypoint.sΒ   10 minutes ag
 │   └── www.sit2.com            站点2根目录
 │ 
 └── php                         PHP Dockfiles
-
-
+│ 
+└── other                       Nginx、Redis、MySQL Dockfiles
 ```
 
 * 站点部署
