@@ -281,9 +281,7 @@ php                 5.4-fpm             1b825a5a7ecd        2 years ago         
 3.构建并启动DNMP
 
 ```
-
 $docker-compose  up -d 
-
 $docker ps 
 
 CONTAINER ID        IMAGE                 COMMAND                  CREATED             STATUS              PORTS                                      NAMES
@@ -301,7 +299,9 @@ ddd712165aec        dnmp_php-7.2:latest   "docker-php-entrypoiΒ   2 hours ago  
 4.打包dnmp集成开发环境images
 
 ```
-$ docker save dnmp_php-5.4 dnmp_php-5.6 dnmp_php-7.1  dnmp_php-7.2  dnmp_redis dnmp_mysql dnmp_nginx > dnmp.tar 
+
+$docker save dnmp_php-5.4 dnmp_php-5.6 dnmp_php-7.1  dnmp_php-7.2  dnmp_redis dnmp_mysql dnmp_nginx > dnmp.tar 
+
 ``` 
 
 
