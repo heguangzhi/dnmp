@@ -294,6 +294,7 @@ d6cf990c932e        dnmp_php-5.4:latest   "php-fpm"                2 hours ago  
 64e03cd823ed        dnmp_php-5.6:latest   "docker-php-entrypoiΒ   2 hours ago         Up 2 hours          9000/tcp                                   dnmp_php-5.6_1
 ddd712165aec        dnmp_php-7.2:latest   "docker-php-entrypoiΒ   2 hours ago         Up 2 hours          9000/tcp                                   dnmp_php-7.2_1
 
+
 ```
 
 4.打包dnmp集成开发环境images
