@@ -281,7 +281,7 @@ php                 5.4-fpm             1b825a5a7ecd        2 years ago         
 
 
 
-3.构建并启动DNMP
+3.构建并启动 DNMP
 
 ```
 $docker-compose  up -d 
