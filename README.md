@@ -284,7 +284,7 @@ php                 5.4-fpm             1b825a5a7ecd        2 years ago         
 $docker-compose  up -d 
 $docker ps 
 
-````
+```
 
 ```
 
