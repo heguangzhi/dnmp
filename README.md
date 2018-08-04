@@ -284,6 +284,10 @@ php                 5.4-fpm             1b825a5a7ecd        2 years ago         
 $docker-compose  up -d 
 $docker ps 
 
+````
+
+```
+
 CONTAINER ID        IMAGE                 COMMAND                  CREATED             STATUS              PORTS                                      NAMES
 ed007d8d69b2        dnmp_nginx:latest     "nginx -g 'daemon ofΒ   2 hours ago         Up 2 hours          0.0.0.0:80->80/tcp, 0.0.0.0:443->443/tcp   dnmp_nginx_1
 e0a4a2530663        dnmp_mysql:latest     "docker-entrypoint.sΒ   2 hours ago         Up 2 hours          0.0.0.0:3306->3306/tcp                     dnmp_mysql_1
