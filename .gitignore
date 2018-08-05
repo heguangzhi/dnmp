@@ -1,2 +1,5 @@
 .*
 !.gitignore
+*.php
+www/www.cashnice.com/translation/
+www/www.site1.com/translation/
