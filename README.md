@@ -34,9 +34,9 @@ dnmp_php-5.6        latest              5058dd413ff1        2 days ago          
 dnmp_php-5.4        latest              3d5f34a10142        2 days ago          854MB
 dnmp_php-7.2        latest              c44343fb86f1        2 days ago          739MB
 dnmp_php-7.1        latest              c44343fb86f1        2 days ago          739MB
-nginx               alpine              2dea9e73d89e        6 days ago          18MB
-redis               latest              c5355f8853e4        13 days ago         107MB
-mysql               5.7              5195076672a7        3 weeks ago         371MB
+dnmp_nginx          latest              2dea9e73d89e        6 days ago          18MB
+dnmp_redis          latest              c5355f8853e4        13 days ago         107MB
+dnmp_mysql          latest              5195076672a7        3 weeks ago         371MB
 
 
 ```
@@ -50,12 +50,12 @@ mysql               5.7              5195076672a7        3 weeks ago         371
  $docker ps 
     
 CONTAINER ID        IMAGE                 COMMAND                  CREATED             STATUS              PORTS                                      NAMES
-9f0d62123d9b        nginx:alpine          "nginx -g 'daemon ofΒ   10 minutes ago      Up 10 minutes       0.0.0.0:80->80/tcp, 0.0.0.0:443->443/tcp   lnmp_nginx_1
-a29c79eda632        lnmp_php-7.2:latest   "docker-php-entrypoiΒ   10 minutes ago      Up 10 minutes       9000/tcp                                   lnmp_php-7.2_1
-f0ae150c249b        lnmp_php-5.6:latest   "docker-php-entrypoiΒ   10 minutes ago      Up 10 minutes       9000/tcp                                   lnmp_php-5.6_1
-fcd1d0e37b9c        lnmp_php-5.4:latest   "php-fpm"                10 minutes ago      Up 10 minutes       9000/tcp                                   lnmp_php-5.4_1
-d155fbb9f5c8        redis:latest          "docker-entrypoint.sΒ   10 minutes ago      Up 10 minutes       0.0.0.0:6379->6379/tcp                     lnmp_redis_1
-2c40800cda39        mysql:5.7             "docker-entrypoint.sΒ   10 minutes ago      Up 10 minutes       0.0.0.0:3306->3306/tcp                     lnmp_mys
+9f0d62123d9b        dnmp_nginx:latest     "nginx -g 'daemon ofΒ   10 minutes ago      Up 10 minutes       0.0.0.0:80->80/tcp, 0.0.0.0:443->443/tcp   dnmp_nginx_1
+a29c79eda632        dnmp_php-7.2:latest   "docker-php-entrypoiΒ   10 minutes ago      Up 10 minutes       9000/tcp                                   dnmp_php-7.2_1
+f0ae150c249b        dnmp_php-5.6:latest   "docker-php-entrypoiΒ   10 minutes ago      Up 10 minutes       9000/tcp                                   dnmp_php-5.6_1
+fcd1d0e37b9c        dnmp_php-5.4:latest   "php-fpm"                10 minutes ago      Up 10 minutes       9000/tcp                                   dnmp_php-5.4_1
+d155fbb9f5c8        dnmp_redis:latest     "docker-entrypoint.sΒ   10 minutes ago      Up 10 minutes       0.0.0.0:6379->6379/tcp                     dnmp_redis_1
+2c40800cda39        dnmp_mysql:latest     "docker-entrypoint.sΒ   10 minutes ago      Up 10 minutes       0.0.0.0:3306->3306/tcp                     dnmp_mysql
 
 ```   
 
