@@ -274,7 +274,7 @@ php                 5.6-fpm             8d3dc6499e61        12 days ago         
 php                 7.1-fpm             72197c69469a        12 days ago         358MB
 php                 7.2-fpm             1d5598895841        12 days ago         367MB
 redis               latest              f06a5773f01e        2 weeks ago         83.4MB
-php                 5.4-fpm             1b825a5a7ecd        2 years ago         469MB```
+php                 5.4-fpm             1b825a5a7ecd        2 years ago         469MB
 
 ```
 
