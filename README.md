@@ -268,7 +268,8 @@ github仓库地址：https://github.com/heguangzhi/dnmp.git
 		#docker-compose  build 
 		
    需要等待一段时间。
-   
+ 
+ ```  
 	#docker images
 	REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
 	dnmp_nginx          latest              a1c7de60a1bc        13 seconds ago      17.7MB
@@ -283,7 +284,7 @@ github仓库地址：https://github.com/heguangzhi/dnmp.git
 	memcached           1.5.11-alpine       01e7979fa175        3 weeks ago         8.97MB
 	centos              7.2.1511            4cbf48630b46        3 weeks ago         195MB
 	nginx               alpine              aae476eee77d        4 weeks ago         17.7M
-   
+ ```  
 		
 3. 启用 LNMP 
 
