@@ -1,5 +1,6 @@
 nginx:
-  image: dnmp_nginx:latest
+  build: ./other/nginx/
+  #image: dnmp_nginx:latest
   ports:
     - "80:80"
     - "443:443"
@@ -10,66 +11,58 @@ nginx:
     - ./log/nginx/:/var/log/nginx/:rw
   links:
     - php-7.2:fpm-7.2
-    - php-5.6:fpm-5.6
-    - php-5.4:fpm-5.4
     - php-7.1:fpm-7.1
+    - php-5.6:fpm-5.6
 
 php-7.2:
-  image: dnmp_php-7.2:latest
+  build: ./php/php-7.2/
+  #image: dnmp_php-7.2:latest
   expose:
     - "9000"
   volumes:
     - ./www/:/var/www/html/:rw
-    - ./conf/php-7.2/php.ini:/usr/local/etc/php/php.ini:ro
-    - ./conf/php-7.2/php-fpm.d/www.conf:/usr/local/etc/php-fpm.d/www.conf:rw
+    - ./conf/php-7.2/php.ini:/etc/php.ini:ro
+    - ./conf/php-7.2/php-fpm.d/www.conf:/etc/php-fpm.d/www.conf:rw
     - ./log/php-fpm-7.2/:/var/log/php-fpm/:rw
   links:
     - mysql:mysql
     - redis:redis
+    - memcached:memcached
 
 
 php-7.1:
-  image: dnmp_php-7.1:latest
+  build: ./php/php-7.1/
+  #image: dnmp_php-7.1:latest
   expose:
     - "9000"
   volumes:
     - ./www/:/var/www/html/:rw
-    - ./conf/php-7.1/php.ini:/usr/local/etc/php/php.ini:ro
-    - ./conf/php-7.1/php-fpm.d/www.conf:/usr/local/etc/php-fpm.d/www.conf:rw
+    - ./conf/php-7.1/php.ini:/etc/php.ini:ro
+    - ./conf/php-7.1/php-fpm.d/www.conf:/etc/php-fpm.d/www.conf:rw
     - ./log/php-fpm-7.1/:/var/log/php-fpm/:rw
   links:
     - mysql:mysql
     - redis:redis
+    - memcached:memcached
  
 php-5.6:
-  #build: ./php/php-5.6/
-  image: dnmp_php-5.6:latest
+  build: ./php/php-5.6/
+  #image: dnmp_php-5.6:latest
   expose:
     - "9000"
   volumes:
     - ./www/:/var/www/html/:rw
-    - ./conf/php-5.6/php.ini:/usr/local/etc/php/php.ini:ro
-    - ./conf/php-5.6/php-fpm.d/www.conf:/usr/local/etc/php-fpm.d/www.conf:rw
+    - ./conf/php-5.6/php.ini:/etc/php.ini:ro
+    - ./conf/php-5.6/php-fpm.d/www.conf:/etc/php-fpm.d/www.conf:rw
     - ./log/php-fpm-5.6/:/var/log/php-fpm/:rw
   links:
     - mysql:mysql
     - redis:redis 
-
-php-5.4:
-  image: dnmp_php-5.4:latest
-  expose:
-    - "9000"
-  volumes:
-    - ./www/:/var/www/html/:rw
-    - ./conf/php-5.4/php.ini:/usr/local/etc/php/php.ini:ro
-    - ./conf/php-5.4/php-fpm.d/www.conf:/usr/local/etc/php-fpm.d/www.conf:rw
-    - ./log/php-fpm-5.4/:/var/log/php-fpm/:rw
-  links:
-    - mysql:mysql
-    - redis:redis 
+    - memcached:memcached
 
 mysql:
-  image: dnmp_mysql:latest
+  build: ./other/mysql/
+  #image: dnmp_mysql:latest
   ports:
     - "3306:3306"
   volumes:
@@ -80,6 +73,16 @@ mysql:
     MYSQL_ROOT_PASSWORD: "123456"
 
 redis:
-  image: dnmp_redis:latest
+  build: ./other/redis/
+  #image: dnmp_redis:latest
   ports:
     - "6379:6379"
+  volumes:
+    - ./conf/redis/redis.conf:/usr/local/etc/redis.conf:ro
+
+memcached:
+  build: ./other/memcached/
+  #image: dnmp_redis:latest
+  ports:
+    - "11211:11211"
+
