@@ -38,23 +38,23 @@ https://cr.console.aliyun.com/cn-beijing/mirrors
 1. 加速器
 	使用加速器可以提升获取Docker官方镜像的速度
 
-	加速器地址：https://i37cj3ld.mirror.aliyuncs.com
+	我的加速器地址：https://j8o6nfq0.mirror.aliyuncs.com 你也可以直接使用。
 2. 操作文档 Mac 版本
 	
 	 * 安装／升级 Docker 客户端
 		对于10.10.3以下的用户 推荐使用 Docker Toolbox
 
-		Mac安装文件：http://mirrors.aliyun.com/docker-toolbox/mac/docker-toolbox/
+		Mac安装文件：<http://mirrors.aliyun.com/docker-toolbox/mac/docker-toolbox/>
 
 		对于10.10.3以上的用户 推荐使用 Docker for Mac
 
-		Mac 安装文件：http://mirrors.aliyun.com/docker-toolbox/mac/docker-for-mac/
+		Mac 安装文件：<http://mirrors.aliyun.com/docker-toolbox/mac/docker-for-mac/>
 
 	* 配置镜像加速器  
 		针对安装了 Docker Toolbox 的用户，您可以参考以下配置步骤：
 		创建一台安装有 Docker 环境的 Linux 虚拟机，指定机器名称为 default ，同时配置 Docker 加速器地址。
 
-		docker-machine create --engine-registry-mirror=https://i37cj3ld.mirror.aliyuncs.com -d virtualbox default
+		docker-machine create --engine-registry-mirror=https://j8o6nfq0.mirror.aliyuncs.com -d virtualbox default
 		查看机器的环境配置，并配置到本地，并通过 Docker 客户端访问 Docker 服务。
 
 			docker-machine env default
@@ -64,31 +64,50 @@ https://cr.console.aliyun.com/cn-beijing/mirrors
 		针对安装了 Docker for Mac 的用户，您可以参考以下配置步骤：
 		右键点击桌面顶栏的 docker 图标，选择 Preferences ，在 Daemon 标签（Docker 17.03 之前版本为 Advanced 标签）下的 Registry mirrors 列表中将
 
-		https://i37cj3ld.mirror.aliyuncs.com 加到 "registry-mirrors" 的数组里，点击 Apply & Restart 按钮，等待 Docker 重启并应用配置的镜像加速器。
+		https://j8o6nfq0.mirror.aliyuncs.com 加到 "registry-mirrors" 的数组里，点击 Apply & Restart 按钮，等待 Docker 重启并应用配置的镜像加速器。
 	
 
+3. 从阿里云 Registry 中拉取镜像
+
+```
+
+docker pull registry.cn-beijing.aliyuncs.com/dnmp/dnmp_nginx:latest 
+docker pull registry.cn-beijing.aliyuncs.com/dnmp/dnmp_php-7.2:latest               
+docker pull registry.cn-beijing.aliyuncs.com/dnmp/dnmp_php-7.1:latest                     
+docker pull registry.cn-beijing.aliyuncs.com/dnmp/dnmp_php-5.6:latest              
+docker pull registry.cn-beijing.aliyuncs.com/dnmp/dnmp_memcached:latest                      
+docker pull registry.cn-beijing.aliyuncs.com/dnmp/dnmp_redis:latest                       
+docker pull registry.cn-beijing.aliyuncs.com/dnmp/dnmp_mysql:latest
+
+docker images 
+
+REPOSITORY                                             TAG                 IMAGE ID            CREATED             SIZE
+registry.cn-beijing.aliyuncs.com/dnmp/dnmp_nginx       latest              a1c7de60a1bc        2 hours ago         17.7MB
+registry.cn-beijing.aliyuncs.com/dnmp/dnmp_php-7.2     latest              e4520299e968        2 hours ago         806MB
+registry.cn-beijing.aliyuncs.com/dnmp/dnmp_php-7.1     latest              4b0bd4563162        5 hours ago         890MB
+registry.cn-beijing.aliyuncs.com/dnmp/dnmp_php-5.6     latest              a6d260ec1ba8        5 hours ago         905MB
+registry.cn-beijing.aliyuncs.com/dnmp/dnmp_memcached   latest              c1eb398ad98c        5 hours ago         15.6MB
+registry.cn-beijing.aliyuncs.com/dnmp/dnmp_redis       latest              8e1de2836763        6 hours ago         94.9MB
+registry.cn-beijing.aliyuncs.com/dnmp/dnmp_mysql       latest              57b9ce70d5ba        6 hours ago         372MB
+
+```
 
 
+4.  tag 镜像
 
+```
+docker  tag a1c7de60a1bc dnmp_nginx    
+docker  tag 4b0bd4563162 dnmp_php-7.1 
+docker  tag 4b0bd4563162 dnmp_php-7.2
+docker  tag a6d260ec1ba8 dnmp_php-5.6 
+docker  tag c1eb398ad98c dnmp_memcached 
+docker  tag 8e1de2836763 dnmp_redis 
+docker  tag 57b9ce70d5ba dnmp_mysql 
 
     
 ```
-$docker load -i dnmp.tar 
-$dcoker images 
-REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
-dnmp_nginx          latest              9e119ed7687e        4 hours ago         17.7MB
-dnmp_php-7.2        latest              ba8db3d065ec        4 hours ago         806MB
-dnmp_php-7.1        latest              b1a222905b4c        5 hours ago         890MB
-dnmp_php-5.6        latest              2b10917e52b8        5 hours ago         905MB
-dnmp_memcached      latest              5fa4dd1e161e        5 hours ago         15.6MB
-dnmp_redis          latest              5100ff157ed1        5 hours ago         94.9MB
-dnmp_mysql          latest              e3f31f4131c8        5 hours ago         372MB
 
-```
-
-可以看到多个image文件已经load进入Docker
-
-* 启动docker容器:
+5. 启动docker容器:
 
 ```
  $docker-compose up -d
@@ -256,42 +275,44 @@ Redis使用和MySQL类似。在主机和容器内部都通过地址 127.0.0.1，
 
 ### 构建集成开发环境
 
-1. 从Github上下载
+*  从Github上下载
 github仓库地址：https://github.com/heguangzhi/dnmp.git 
 
+```
+	$git clone  https://github.com/heguangzhi/dnmp.git
+```
 
-		#git clone  https://github.com/heguangzhi/dnmp.git
-
-2. 构建 LNMP
-
-		#cd dnmp  
-		#docker-compose  build 
-		
-   需要等待一段时间。
- 
- ```  
-	#docker images
-	REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
-	dnmp_nginx          latest              a1c7de60a1bc        13 seconds ago      17.7MB
-	dnmp_php-7.2        latest              e4520299e968        33 seconds ago      806MB
-	dnmp_php-7.1        latest              4b0bd4563162        3 hours ago         890MB
-	dnmp_php-5.6        latest              a6d260ec1ba8        3 hours ago         905MB
-	dnmp_memcached      latest              c1eb398ad98c        3 hours ago         15.6MB
-	dnmp_redis          latest              8e1de2836763        3 hours ago         94.9MB
-	dnmp_mysql          latest              57b9ce70d5ba        3 hours ago         372MB
-	mysql               5.7                 702fb0b7837f        11 days ago         372MB
-	redis               latest              1babb1dde7e1        2 weeks ago         94.9MB
-	memcached           1.5.11-alpine       01e7979fa175        3 weeks ago         8.97MB
-	centos              7.2.1511            4cbf48630b46        3 weeks ago         195MB
-	nginx               alpine              aae476eee77d        4 weeks ago         17.7M
- ```  
-		
-3. 启用 LNMP 
-
+* 构建 LNMP
 
 ```
-#doker-compose  up  -d
-	
+$cd dnmp  
+$docker-compose  build 
+```		
+
+需要等待一段时间。
+ 
+```  
+$docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+dnmp_nginx          latest              a1c7de60a1bc        13 seconds ago      17.7MB
+dnmp_php-7.2        latest              e4520299e968        33 seconds ago      806MB
+dnmp_php-7.1        latest              4b0bd4563162        3 hours ago         890MB
+dnmp_php-5.6        latest              a6d260ec1ba8        3 hours ago         905MB
+dnmp_memcached      latest              c1eb398ad98c        3 hours ago         15.6MB
+dnmp_redis          latest              8e1de2836763        3 hours ago         94.9MB
+dnmp_mysql          latest              57b9ce70d5ba        3 hours ago         372MB
+mysql               5.7                 702fb0b7837f        11 days ago         372MB
+redis               latest              1babb1dde7e1        2 weeks ago         94.9MB
+memcached           1.5.11-alpine       01e7979fa175        3 weeks ago         8.97MB
+centos              7.2.1511            4cbf48630b46        3 weeks ago         195MB
+nginx               alpine              aae476eee77d        4 weeks ago         17.7M
+
+```  
+		
+* 启用 LNMP 
+
+```	
+$doker-compose  up  -d
 Creating dnmp_mysql_1     ... done
 Creating dnmp_memcached_1 ... done
 Creating dnmp_redis_1     ... done
@@ -300,7 +321,7 @@ Creating dnmp_php-5.6_1   ... done
 Creating dnmp_php-7.2_1   ... done
 Creating dnmp_nginx_1     ... done
 
-#docker ps 
+$docker ps 
 
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                                      NAMES
 13798e2af9aa        dnmp_nginx          "nginx -g 'daemon ofΒ   14 seconds ago      Up 13 seconds       0.0.0.0:80->80/tcp, 0.0.0.0:443->443/tcp   dnmp_nginx_1
@@ -311,6 +332,35 @@ bff009fbf384        dnmp_memcached      "docker-entrypoint.sΒ   16 seconds ago 
 d42fed007ac6        dnmp_mysql          "docker-entrypoint.sΒ   16 seconds ago      Up 15 seconds       0.0.0.0:3306->3306/tcp, 33060/tcp          dnmp_mysql_1
 933c7e41e335        dnmp_redis          "docker-entrypoint.sΒ   16 seconds ago      Up 15 seconds       0.0.0.0:6379->6379/tcp                     dnmp_redis_1
 
+```
+
+*  发布到阿里云
+	按照阿里云说明 
+	* 创建镜像仓库
+	* 登录阿里云Docker Registry
+	* 将镜像推送到Registry
+
+```
+REPOSITORY                                             TAG                 IMAGE ID            CREATED             SIZE
+dnmp_nginx                                             latest              a1c7de60a1bc        2 hours ago         17.7MB
+registry.cn-beijing.aliyuncs.com/dnmp/dnmp_nginx       latest              a1c7de60a1bc        2 hours ago         17.7MB
+dnmp_php-7.2                                           latest              e4520299e968        2 hours ago         806MB
+registry.cn-beijing.aliyuncs.com/dnmp/dnmp_php-7.2     latest              e4520299e968        2 hours ago         806MB
+dnmp_php-7.1                                           latest              4b0bd4563162        5 hours ago         890MB
+registry.cn-beijing.aliyuncs.com/dnmp/dnmp_php-7.1     latest              4b0bd4563162        5 hours ago         890MB
+dnmp_php-5.6                                           latest              a6d260ec1ba8        5 hours ago         905MB
+registry.cn-beijing.aliyuncs.com/dnmp/dnmp_php-5.6     latest              a6d260ec1ba8        5 hours ago         905MB
+dnmp_memcached                                         latest              c1eb398ad98c        5 hours ago         15.6MB
+registry.cn-beijing.aliyuncs.com/dnmp/dnmp_memcached   latest              c1eb398ad98c        5 hours ago         15.6MB
+dnmp_redis                                             latest              8e1de2836763        5 hours ago         94.9MB
+registry.cn-beijing.aliyuncs.com/dnmp/dnmp_redis       latest              8e1de2836763        5 hours ago         94.9MB
+dnmp_mysql                                             latest              57b9ce70d5ba        5 hours ago         372MB
+registry.cn-beijing.aliyuncs.com/dnmp/dnmp_mysql       latest              57b9ce70d5ba        5 hours ago         372MB
+mysql                                                  5.7                 702fb0b7837f        11 days ago         372MB
+redis                                                  latest              1babb1dde7e1        2 weeks ago         94.9MB
+memcached                                              1.5.11-alpine       01e7979fa175        3 weeks ago         8.97MB
+centos                                                 7.2.1511            4cbf48630b46        3 weeks ago         195MB
+nginx                                                  alpine              aae476eee77d        4 weeks ago         17.7MB
 ```
 
 [1]:https://cr.console.aliyun.com/cn-beijing/mirrors  "镜像加速器"
