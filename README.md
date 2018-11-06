@@ -286,7 +286,7 @@ Redis使用和MySQL类似。在主机和容器内部都通过地址 127.0.0.1，
 github仓库地址：https://github.com/heguangzhi/dnmp.git 
 
 ```
-	$git clone  https://github.com/heguangzhi/dnmp.git
+$git clone  https://github.com/heguangzhi/dnmp.git
 ```
 
 2. 构建 LNMP
