@@ -271,7 +271,7 @@ $pdo = new PDO('mysql:host=mysql;dbname=****', 'root', '123456');
 
 这是因为PHP代码是在PHP-FPM容器中，PHP-FPM容器启动时会自动在/etc/hosts中加上,可能在你的机器上 IP 有差别：
 
-		172.17.0.2 mysql 11e55f91c4c3 dnmp_mysql_1
+	172.17.0.2 mysql 11e55f91c4c3 dnmp_mysql_1
 
 就是说，mysql 自动指向了 MySQL 容器动态生成的 IP。
 
