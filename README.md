@@ -93,8 +93,6 @@ docker  tag a6d260ec1ba8 dnmp_php-5.6
 docker  tag c1eb398ad98c dnmp_memcached 
 docker  tag 8e1de2836763 dnmp_redis 
 docker  tag 57b9ce70d5ba dnmp_mysql 
-
-    
 ```
 
 5. 下载集成开发环境包
