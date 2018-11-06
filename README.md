@@ -20,10 +20,6 @@ CentOS（可以说）更稳定以及更安全。由于 CentOS 的更新频率较
 
 ### 快速部署 Docker CentOS LNMP 
 
-#### 安装 docker docker-compose  
-
-
-
 
 根据系统Linux,MacOS 安装 `docker` and `docker-compose` , [镜像加速器][1] 使用阿里云。
 
@@ -35,12 +31,12 @@ https://cr.console.aliyun.com/cn-beijing/mirrors
 
 例如我的配置如下：
 
-1. 加速器
+#### 1. 加速器
 
 	使用加速器可以提升获取Docker官方镜像的速度
 	我的加速器地址：https://j8o6nfq0.mirror.aliyuncs.com 你也可以直接使用。
 
-2. 安装 Mac 版本，你也可以安装你自己的相应的版本，以下以安装 Mac 版本为例：
+#### 2. 安装 Mac 版本，你也可以安装你自己的相应的版本，以下以安装 Mac 版本为例：
 	
 	 * 安装／升级 Docker 客户端
 		对于10.10.3以下的用户 推荐使用 Docker Toolbox
@@ -57,7 +53,7 @@ https://cr.console.aliyun.com/cn-beijing/mirrors
 	  https://j8o6nfq0.mirror.aliyuncs.com 加到 "registry-mirrors" 的数组里，点击 Apply & Restart 按钮，等待 Docker 重启并应用配置的镜像加速器。
 	
 
-3. 从阿里云 Registry 中拉取镜像
+#### 3. 从阿里云 Registry 中拉取镜像
 
 ```
 
@@ -83,7 +79,7 @@ registry.cn-beijing.aliyuncs.com/dnmp/dnmp_mysql       latest              57b9c
 ```
 
 
-4.  tag 镜像
+#### 4.  tag 镜像
 
 ```
 docker  tag a1c7de60a1bc dnmp_nginx    
@@ -95,7 +91,7 @@ docker  tag 8e1de2836763 dnmp_redis
 docker  tag 57b9ce70d5ba dnmp_mysql 
 ```
 
-5. 下载集成开发环境包
+#### 5. 下载集成开发环境包
 
 从Github上下载
 
@@ -106,7 +102,7 @@ $git clone  https://github.com/heguangzhi/dnmp.git
 
 ```
 
-6. 启动docker容器:
+#### 6. 启动docker容器:
 
 ```
 $cd dnmp 
@@ -123,13 +119,13 @@ b0795867d8c9        dnmp_mysql          "docker-entrypoint.sΒ   2 minutes ago  
 6ff1bbfd6591        dnmp_redis          "docker-entrypoint.sΒ   2 minutes ago       Up 3 minutes        0.0.0.0:6379->6379/tcp                     dnmp_redis_1
 ```   
 
-7. 查看容器启动
+#### 7. 查看容器启动
     
 在浏览器中查看 如下图所示:
 
 ![Demo Image](./snapshot.png)
 
-8. 目录结构
+#### 8. 目录结构
  
 目录结构如下：
 
@@ -174,7 +170,7 @@ b0795867d8c9        dnmp_mysql          "docker-entrypoint.sΒ   2 minutes ago  
 └── other                       Nginx、Redis、MySQL、Memcached Dockfiles
 ```
 
-9. 站点部署
+#### 9. 站点部署
 
 默认加了两个站点：www.site1.com（同 localhos t）和www.site2.com, 在www站点目录中，在 Nginx conf 目录也有相应的配置文件
 
@@ -207,7 +203,7 @@ $docker-compose  restart nginx
 nginx 为docker-compose.yml 规定的服务名（service）
 
 
-10. 切换不同的PHP版本 
+#### 10. 切换不同的PHP版本 
 
 找到nginx虚机配置文件
 例如： www.site1.com.conf 修改nginx配置文件：
@@ -242,7 +238,7 @@ $docker-compose  restart nginx
 
 ```
 
-11. 使用MySQL数据库
+#### 11. 使用MySQL数据库
 
 docker-compose.yml文件中，指定了MySQL数据库root用户的密码为123456。 
 在主机终端中输入密码，就可以进入MySQL命令行。
@@ -269,21 +265,21 @@ $pdo = new PDO('mysql:host=mysql;dbname=****', 'root', '123456');
 
 就是说，mysql 自动指向了 MySQL 容器动态生成的 IP。
 
-12. 使用Redis
+#### 12. 使用Redis
 
 Redis使用和MySQL类似。在主机和容器内部都通过地址 127.0.0.1，端口 6379 访问。PHP 则是跨容器访问，host是参数用redis（links指定的名称），端口用6379。
 
 
 ### 构建集成开发环境
 
-1.  从Github上下载
+#### 1.  从Github上下载
 github仓库地址：https://github.com/heguangzhi/dnmp.git 
 
 ```
 $git clone  https://github.com/heguangzhi/dnmp.git
 ```
 
-2. 构建 LNMP
+#### 2. 构建 LNMP
 
 ```
 $cd dnmp  
@@ -310,7 +306,7 @@ nginx               alpine              aae476eee77d        4 weeks ago         
 
 ```  
 		
-3. 启用 LNMP 
+#### 3. 启用 LNMP 
 
 ```	
 $doker-compose  up  -d
@@ -335,7 +331,7 @@ d42fed007ac6        dnmp_mysql          "docker-entrypoint.sΒ   16 seconds ago 
 
 ```
 
-4.  发布到阿里云
+#### 4.  发布到阿里云
 	按照阿里云说明 
 	* 创建镜像仓库
 	* 登录阿里云Docker Registry
