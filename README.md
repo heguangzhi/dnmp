@@ -131,7 +131,8 @@ b0795867d8c9        dnmp_mysql          "docker-entrypoint.sΒ   2 minutes ago  
 
 7. 查看容器启动
     
-在浏览其中localhost:
+在浏览器中查看 如下图所示:
+
 ![Demo Image](./snapshot.png)
 
 8. 目录结构
