@@ -52,13 +52,9 @@ https://cr.console.aliyun.com/cn-beijing/mirrors
 		Mac 安装文件：<http://mirrors.aliyun.com/docker-toolbox/mac/docker-for-mac/>
 
 	* 配置镜像加速器  
-
-	 针对安装了 Docker for Mac 的用户，您可以参考以下配置步骤：  
-	
-	 
-	 右键点击桌面顶栏的 docker 图标，选择 Preferences ，在 Daemon 标签（Docker 17.03 之前版本为 Advanced 标签）下的 Registry mirrors 列表中将  
-	 
-	 https://j8o6nfq0.mirror.aliyuncs.com 加到 "registry-mirrors" 的数组里，点击 Apply & Restart 按钮，等待 Docker 重启并应用配置的镜像加速器。
+	  针对安装了 Docker for Mac 的用户，您可以参考以下配置步骤：  
+	  右键点击桌面顶栏的 docker 图标，选择 Preferences ，在 Daemon 标签（Docker 17.03 之前版本为 Advanced 标签）下的 Registry mirrors 列表中将  
+	  https://j8o6nfq0.mirror.aliyuncs.com 加到 "registry-mirrors" 的数组里，点击 Apply & Restart 按钮，等待 Docker 重启并应用配置的镜像加速器。
 	
 
 3. 从阿里云 Registry 中拉取镜像
